@@ -1,8 +1,27 @@
-# Data Science Project Boilerplate
+# SISTEMA DE PREDICCION DE VENTAS 
 
-This boilerplate is designed to kickstart data science projects by providing a basic setup for database connections, data processing, and machine learning model development. It includes a structured folder organization for your datasets and a set of pre-defined Python packages necessary for most data science tasks.
+Queremos establecer el almacén de nuestra empresa en otra localización y necesitamos estimar el ritmo de las ventas, que desde la creación de la empresa ha ido en aumento, para los próximos meses, a fin de proveer el espacio que necesitaremos.
 
-## Structure
+1. Cargamos el conjunto de datos
+
+2: Construimos y analizamos una serie temporal
+Construimos la estructura de datos válida para la serie temporal, la grafícamos y, a continuación, la analízamos y respondemos a las siguientes preguntas:
+
+¿Cuál es el tensor de la serie temporal?
+¿Cuál es la tendencia?
+¿Es estacionaria?
+¿Existe variabilidad o presencia de ruido?
+
+3: Entrenamos un ARIMA
+Utilizamos los datos de entrenamiento para encontrar la mejor parametrización de nuestro modelo ARIMA.
+
+4: Predecimos con el conjunto de test
+Utilizamos el modelo entrenado con el conjunto de prueba y comparamos los puntos con los reales. 
+Medimos el rendimiento de la serie temporal.
+
+5: Guardamos el modelo
+
+# ESTRUCTURA
 
 The project is organized as follows:
 
@@ -33,22 +52,6 @@ Navigate to the project directory and install the required Python packages:
 pip install -r requirements.txt
 ```
 
-**Create a database (if needed)**
-
-Create a new database within the Postgres engine by customizing and executing the following command: `$ createdb -h localhost -U <username> <db_name>`
-Connect to the Postgres engine to use your database, manipulate tables and data: `$ psql -h localhost -U <username> <db_name>`
-NOTE: Remember to check the ./.env file information to get the username and db_name.
-
-Once you are inside PSQL you will be able to create tables, make queries, insert, update or delete data and much more!
-
-**Environment Variables**
-
-Create a .env file in the project root directory to store your environment variables, such as your database connection string:
-
-```makefile
-DATABASE_URL="your_database_connection_url_here"
-```
-
 ## Running the Application
 
 To run the application, execute the app.py script from the root of the project directory:
@@ -56,31 +59,6 @@ To run the application, execute the app.py script from the root of the project d
 ```bash
 python app.py
 ```
-
-## Adding Models
-
-To add SQLAlchemy model classes, create new Python script files inside the models/ directory. These classes should be defined according to your database schema.
-
-Example model definition (`models/example_model.py`):
-
-```py
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
-
-Base = declarative_base()
-
-class ExampleModel(Base):
-    __tablename__ = 'example_table'
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-
-```
-
-## Working with Data
-
-You can place your raw datasets in the data/raw directory, intermediate datasets in data/interim, and the processed datasets ready for analysis in data/processed.
-
-To process data, you can modify the app.py script to include your data processing steps, utilizing pandas for data manipulation and analysis.
 
 ## Contributors
 
